@@ -1,0 +1,40 @@
+<!--pages/mine/pages/rules/oddsDetail/oddsDetail.wxml-->
+<!--
+    addtime : "1489942634"
+    gameid  : "2" 
+    id      : "39" 
+    odds    : "666.00" 
+    status  : "1"
+    type    : "0"
+-->
+<view class="content flex-around-center">
+
+    <view class='width50'>
+        <view class="flex-around-center border-bottom border-right border-left border-top">
+            <view class='width50'>类型</view>
+            <view class='width50'>比值</view>
+        </view >
+        <block wx:for="{{rows1}}" wx:key="">
+            <view class="flex-around-center border-bottom border-right border-left" style="height:40rpx">
+                <view class='width50'>{{item.type}}</view>
+                <view class='width50'>{{item.odds}}</view>
+            </view>
+        </block>
+    </view>
+    
+    <view class='width50'>
+        <view class="flex-around-center border-bottom border-right border-top">
+            <view class='width50'>类型</view>
+            <view class='width50'>比值</view>
+        </view >
+        <block wx:for="{{rows2}}" wx:key="">
+            <view class="flex-around-center border-bottom border-right" style="height:40rpx">
+                <view class='width50'>{{item.type}}</view>
+                <view class='width50'>{{item.odds}}</view>
+            </view>
+        </block>
+    </view>
+    
+</view>
+  <loading hidden="{{hidden}}">加载...</loading>
+

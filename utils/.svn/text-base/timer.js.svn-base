@@ -1,0 +1,31 @@
+
+var util = require('./util.js')
+
+class Timer{
+    constructor (date){
+        this.date = date
+    }
+   
+    updateTime (){
+        var haomiao = this.date.getTime()
+        haomiao -= 10
+        this.date.setTime(haomiao)
+    }
+    getTimes(){
+        this.updateTime();
+        return {
+            hour : util.formatNumber(this.date.getHours()),
+            minute : util.formatNumber(this.date.getMinutes()),
+            second : util.formatNumber(this.date.getSeconds()),
+            haomiao : this.date.getTime() 
+        }
+    }
+
+}
+function createTimer(date){
+     return new Timer(date);
+}
+
+module.exports = {
+  createTimer: createTimer
+}

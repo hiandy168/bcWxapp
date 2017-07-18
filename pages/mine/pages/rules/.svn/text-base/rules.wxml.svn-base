@@ -1,0 +1,24 @@
+<!--pages/rules/rules.wxml-->
+<view class="content">  
+    <!--聊天规则-->
+<view class="rules">
+    <view class="title">聊天规则:</view>
+    <view class="ruleItem">1、发送24/12/32;</view>
+    <view class="ruleItem">2、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">3、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">4、发送24/12/32;发送24/12/32;发送24/12/32;</view>
+</view>
+<view style="height:25rpx;"></view>
+<!--游戏规则-->
+<view class="rules border-top">
+     <view class="title">游戏规则:</view>
+    <view class="ruleItem">1、发送24/12/32;</view>
+    <view class="ruleItem">2、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">3、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">4、发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">5、发送24/12/32;</view>
+    <view class="ruleItem">6、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">7、发送24/12/32;发送24/12/32;发送24/12/32;发送24/12/32;</view>
+    <view class="ruleItem">8、发送24/12/32;发送24/12/32;发送24/12/32;</view>
+</view>
+</view>

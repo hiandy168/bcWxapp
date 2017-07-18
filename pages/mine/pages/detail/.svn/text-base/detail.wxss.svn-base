@@ -1,0 +1,29 @@
+/* pages/mine/pages/detail/detail.wxss */
+.content {
+    padding: 10px;
+}
+.header-img {
+    height: 35px;
+    width: 35px;
+}
+.font12 {
+    font-size: 12px;
+}
+.marginleft10 {
+    margin-left: 10px;
+}
+.width20{
+    width: 20%;
+    text-align: center;
+}
+.width40{
+    width: 40%;
+    text-align: center;
+}
+.width30{
+    width: 30%;
+    text-align: center;
+}
+.txtcolor{
+    background-color: white;
+}

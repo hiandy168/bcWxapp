@@ -1,0 +1,229 @@
+// pages/beijing/beijing.js
+
+var util =  require('../../utils/util.js')
+var timer =  require('../../utils/timer.js')
+var elementer =  require('../../utils/element.js')
+var messager =  require('../../utils/message.js')
+var user =  require('../../utils/user.js')
+var tool =  require('../../utils/tools.js')
+
+var app = getApp()
+var socketOpen = false
+Page({
+  data:{
+    minute: '00',
+    second : '00',
+    isHidden:true, // 是否显示期数列表
+    selectedIndex:0, //被选中的期数
+    minusEnable : 'B',
+    plusEnable : 'B',
+    latestData : [], // 最新的十个期号
+    messages : [], // 消息列
+    scrollTop:  0, // 消息滚动高度
+    inputText : "", //输入框内容
+    state : "下注中:",
+    trendIsHideen : false,
+    trendLeftSelected : true,
+    highLightColor : 'rgb(51, 83, 151)',
+    normalColor : 'rgb(0, 199, 247)'
+  },
+  onLoad:function(options){
+    
+    var that = this
+    
+    // 页面初始化 options为页面跳转所带来的参数
+    
+    // 输入框处理
+    var z = 160 + 118 + 126 + 10 
+    var x = 750 * (app.globalData.systemInfo.windowHeight) / app.globalData.systemInfo.windowWidth 
+    if(app.globalData.systemInfo.system.substr(0,3) == 'iOS'){
+      x = 750 * (app.globalData.systemInfo.windowHeight-49) / app.globalData.systemInfo.windowWidth  
+    }
+    that.setData({ scrollHeight : x - z }) 
+
+    // 时间 计时器
+    var time = timer.createTimer(new Date(5 * 60 * 1000))
+    setInterval(function(){
+      var times = time.getTimes()
+      that.setData({
+        minute : times['minute'],
+        second : times['second']
+      })
+      if(times['haomiao'] == 0){
+        time.date = new Date(5 * 60 * 1000)
+
+        that.data.latestData.pop()
+        var element = elementer.createElement({
+          id : that.data.latestData[0].id + 1,
+          firstNum : 3,
+          secondNum : 4,
+          thirdNum : 4,
+          sum: 11,
+          sumlevel:  "单",
+          sumType: "小",
+          beginTime : new Date(),
+          duration : new Date(5 * 60 * 1000),
+          residue : 0
+        })
+        that.data.latestData.unshift(element)
+        that.setData({latestData : that.data.latestData})
+      }
+      if(times['haomiao'] >= 45 * 1000){
+        that.setData({
+          loading : false,
+          state : "下注中："
+        })
+      }else {
+        that.setData({
+          loading : true,
+          state : "等待开奖："
+        })
+      }
+
+    },10)
+
+    // 模拟数据
+    for(var i = 0;i<10;i++){
+      var element = elementer.createElement({
+        id : 8077221 + i,
+        firstNum : 0 + i,
+        secondNum : 0+ i,
+        thirdNum : 0+ i,
+        sum: i * 3,
+        sumlevel: i*3%2==0 ? "双" : "单",
+        sumType: i*3 > 15 ? "大": "小",
+        beginTime : new Date(),
+        duration : new Date(5 * 60 * 1000),
+        residue : 0
+      })
+      that.data.latestData.unshift(element)
+    }
+    that.setData({latestData : that.data.latestData})
+
+    // 按钮是否可以点击 
+    if(that.data.selectedIndex == that.data.latestData.length-1){
+      that.setData({plusEnable : 'B'})
+    }else{
+      that.setData({plusEnable : 'A'})
+    }
+    if(that.data.selectedIndex == 0){
+      that.setData({minusEnable : 'B'})
+    }else{
+      that.setData({minusEnable : 'A'})
+    }
+   
+  },
+  onReady:function(){
+    // 页面渲染完成
+  },
+  onShow:function(){
+    // 页面显示
+  },
+  onHide:function(){
+    // 页面隐藏
+  },
+  onUnload:function(){
+    // 页面关闭
+  },
+  minusA : function (e){ // 减号点击
+    var that = this
+    that.data.selectedIndex -= 1
+    if(that.data.selectedIndex == 0){
+      that.setData({minusEnable : 'B'})
+    }
+    that.setData({
+       selectedIndex : that.data.selectedIndex,
+       plusEnable : 'A'
+    })
+  },
+  plusA : function (e){ // 加号点击
+    var that = this
+    that.data.selectedIndex += 1
+    if(that.data.selectedIndex == that.data.latestData.length-1){
+      that.setData({plusEnable : 'B'})
+    }
+    that.setData({
+      selectedIndex : that.data.selectedIndex,
+      minusEnable : 'A' 
+    })
+  },
+  inputBtnClicked : function(e){ // 期数列表被点击
+     this.setData({isHidden:!this.data.isHidden})     
+  },
+  oneBtnCatched : function(e){ // 任意一期被点击
+    this.setData({
+      isHidden : !this.data.isHidden,
+      selectedIndex : e.currentTarget.dataset.index
+    })
+    var that = this
+    if(that.data.selectedIndex == that.data.latestData.length-1){
+      that.setData({plusEnable : 'B'})
+    }else{
+      that.setData({plusEnable : 'A'})
+    }
+    if(that.data.selectedIndex == 0){
+      that.setData({minusEnable : 'B'})
+    }else{
+      that.setData({minusEnable : 'A'})
+    }
+  },
+  formSubmit : function(e){ // 发送消息
+    var that = this
+    if(e.detail.value.value.length > 0){  // 有文字
+      // 计算文本高度    
+      var textHeight = tool.getTextWidth(e.detail.value.value, (750 - 60)*0.8*0.8 - 36, 28, 32)
+      var user =  wx.getStorageSync('userInfo')
+      var message = messager.createMessage({
+        type1 : that.data.messages.length%2 == 0 ? 'left' : "right",
+        content : e.detail.value.value,
+        CTime : util.formatTime(new Date()),
+        user : user,
+        textHeight : textHeight + 36 + 60,
+      })
+      that.data.messages.push(message)
+      that.setData({
+        messages : that.data.messages,
+        inputText : "",
+      })
+
+      var txtHeight = 0
+      for(var i = 0;i<that.data.messages.length;i++){
+        txtHeight += that.data.messages[i].textHeight 
+      }
+      var deltaH  = txtHeight - that.data.scrollHeight
+      if(deltaH > 0){
+        that.setData({scrollTop : deltaH })
+      }
+    }
+  },
+  finish:function (e){
+    var that = this
+    e.detail.value = {value : e.detail.value}
+    that.formSubmit(e) 
+  },
+  showTrend : function (e){
+    var that = this
+    that.setData({trendIsHideen : !that.data.trendIsHideen})
+  },
+  trendLeftClicked : function (e){
+    var that = this
+    if(that.data.trendLeftSelected) return
+    that.setData({
+      trendLeftSelected : !that.data.trendLeftSelected
+    })
+  },
+  trendRightClicked : function (e){
+    var that = this
+    if(!that.data.trendLeftSelected) return
+    that.setData({
+      trendLeftSelected : !that.data.trendLeftSelected
+    })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '北京区 - 博彩',
+      path: 'pages/beijing/beijing'
+    }
+  }
+
+})

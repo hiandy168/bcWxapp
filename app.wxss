@@ -1,0 +1,67 @@
+/**app.wxss**/
+/**
+ * 全局样式表
+ * 使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束
+ * 如果需要增加额外的WXSS样式表, 直接import即可, 但需注意引用顺序
+ */
+@import "weui.wxss";
+@import "skyvow.wxss";
+
+/* 公共样式 */
+page{
+    font-size: 15px;
+}
+
+.flex-start-start{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.flex-start-center{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flex-between-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-around-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.border{
+    border: 1rpx solid black;
+}
+.border-right{
+    border-right: 2rpx gray solid;
+}
+.border-bottom{
+    border-bottom: 2rpx gray solid;
+}
+.border-left{
+    border-left: 2rpx gray solid;
+} 
+.border-top{
+    border-top: 2rpx gray solid;
+}
+.paddingleft5{
+    padding-left: 5px;
+}
+.red {color: red;}
+.gray{color: gray}
+.font12{font-size: 12px}
+.left{float: left}
+
+.right{float: right}
+
+.clear{clear: both}
+.bg_red{background-color:rgb(232,78,64);}
+.bg_blue{background-color: rgb(115,143,254);}
+
+.margintop8{
+    margin-top: 8px;
+}

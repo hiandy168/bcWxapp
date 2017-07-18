@@ -1,0 +1,31 @@
+<!--pages/mine/pages/nper/nper.wxml-->
+<view>
+    <view class="content flex-start-center">
+        <image src="../../../../images/detail.png" class="header-img"></image>
+        <view class="marginleft10">
+            <view><text>记录</text></view>
+            <view><text class="font12">变化等情况</text></view>
+        </view>
+    </view>
+    
+    <view class="content txtcolor font12">
+        <text class="red">注：详细记录</text>
+        <view class="flex-between-center border-top border-left" style="height:40rpx">
+                <text class="width20 border-right border-bottom">时间</text>
+                <text class="width20 border-right border-bottom">站号</text>
+                <text class="width60 border-right border-bottom paadingleft10">内容</text>    
+        </view>
+        <scroll-view class="" scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="lower">
+            
+            <block wx:for="{{sources}}" wx:key="">
+                <view class="flex-between-center border-left" style="height:40rpx;">
+                    <text class="width20 border-right border-bottom" >{{item.addtime}}</text>
+                    <text class="width20 border-right border-bottom" >{{item.deltaNum}}</text>
+                    <text class="width60 border-right border-bottom little textleft paadingleft10">{{item.endNum}}<text style="color:{{item.color}};">{{item.status}}</text>{{item.bunko}}</text>    
+                </view>
+            </block>
+        </scroll-view>
+        <view hidden="{{sources.length!=0}}" class="enptytext" style="height:40rpx;">数据为空</view>
+    </view>
+    <loading hidden="{{hidden}}">加载...</loading>
+</view>

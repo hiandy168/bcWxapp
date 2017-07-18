@@ -1,0 +1,60 @@
+/* pages/mine/pages/profile/profile.wxss */
+
+.content {
+    padding: 10px 30rpx 10rpx 30rpx;
+}
+.txtcolor{
+    color: #7b7b7b;    
+    background-color: white;
+}
+
+.header-img {
+    height: 35px;
+    width: 35px;
+}
+.font12 {
+    font-size: 12px;
+}
+.marginleft10 {
+    margin-left: 10px;
+}
+
+.icon-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.width30{
+    font-size: 30rpx;
+    width: 25%;
+    color: #7b7b7b;
+}
+.width70{
+    width: 75%;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+}
+.padding-bottom-30 {
+    margin-bottom: 30rpx;
+}
+.width70 input{
+    border: 2rpx solid #9b9b9b;
+    border-radius: 6rpx;
+    padding: 10rpx;
+    color: #555;
+    font-size: 28rpx;
+}
+
+/*修改*/
+.btn button{
+    display: block;
+    width: 405rpx;
+    height: 75rpx;
+    color: white;
+    background-color: red;
+    border: none;   
+    font-size: 30rpx;
+    line-height: 75rpx;
+    margin-top: 80rpx;
+}

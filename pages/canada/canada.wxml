@@ -1,0 +1,3 @@
+<!--pages/canada/canada.wxml-->
+
+<include src="../beijing/beijing.wxml"/>

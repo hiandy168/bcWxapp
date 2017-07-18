@@ -1,0 +1,21 @@
+/* pages/rules/rules.wxss */
+.content{
+    padding: 25rpx 30rpx 25rpx 30rpx;
+}
+.rules{
+    background-color: white;
+    border: 2rpx solid #e2e2e2;
+    border-radius: 16rpx;
+    padding: 40rpx 30rpx 40rpx 30rpx;
+}
+.title{
+    font-size: 30rpx;
+    margin-bottom: 35rpx;
+}
+
+.ruleItem{
+    line-height: 150%;
+    font-size: 26rpx;
+    color: #9b9b9b;
+    margin-bottom: 8rpx;
+}

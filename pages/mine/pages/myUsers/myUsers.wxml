@@ -1,0 +1,20 @@
+<!--pages/mine/pages/myUsers/myUsers.wxml-->
+
+<view class="content">
+    
+    <view hidden="{{rows.length != 0}}" class="rules" >暂无下线用户</view>
+
+    <block  wx:for="{{rows}}" wx:key="">
+        <view class="rules flex-start-center" >
+            <image style="width:15%;" class="headerimg" src="https://app.zhaokaiyu.com/{{item.img}}"> </image>
+            <view style="width:85%;">
+                <view class="huahang">姓名：{{item.realname ? item.realname : "暂空"}}</view>
+                <view wx:if="{{item.wei_pay.length == 0}}" class="">微信号：暂无</view>
+                <view wx:else class="">微信号：{{item.wei_pay ? item.wei_pay : "暂空"}}</view>
+            </view>
+        </view>
+    </block>
+
+</view>
+  <loading hidden="{{hidden}}">加载...</loading>
+

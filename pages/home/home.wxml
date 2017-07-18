@@ -1,0 +1,9 @@
+<!--pages/home/home.wxml-->
+
+<!-- 加拿大28-2  北京28-1 -->
+
+<view wx:for="{{lists}}" wx:key="">
+    <button bindtap="{{item.game}}">{{item.game}}</button>    
+</view>
+
+<loading hidden="{{hidden}}">登录...</loading>

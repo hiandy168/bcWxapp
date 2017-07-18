@@ -1,0 +1,30 @@
+/* pages/mine/pages/myUsers/myUsers.wxss */
+
+.content{
+    padding: 25rpx 30rpx 25rpx 30rpx;
+}
+.rules {
+    background-color: white;
+    border: 2rpx solid #e2e2e2;
+    border-radius: 16rpx;
+    padding: 40rpx 30rpx 40rpx 30rpx;
+}
+
+.headerimg{
+    width: 80rpx;
+    height: 80rpx;
+    border: 2rpx solid black;
+    margin-right: 20rpx;
+}
+
+.line{
+    background-color: black;
+    width: 500rpx;
+    height: 2rpx;
+}
+
+.huanhang{
+   overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;  /*文本不换行，这样超出一行的部分被截取，显示...*/ 
+}

@@ -1,0 +1,66 @@
+<!--pages/mine/pages/profile/profile.wxml-->
+<view>
+    <view class="content flex-start-center ">
+        <image src="../../../../image/detail.png" class="header-img"></image>
+        <view class="marginleft10">
+            <view><text>我的资料</text></view>
+            <view><text class="font12">管理个人资料</text></view>
+        </view>
+    </view>
+    
+    <form bindsubmit="xiugai">
+    <view class="content txtcolor">
+        <!--头像-->
+        <view class="flex-start-center padding-bottom-10">
+            <text class="width30">头像</text>
+            <image src="{{currentAvatarUrl}}" mode="aspectFill" class="icon-img border" bindtap="chooseAvatar"></image>
+        </view>
+        
+        <!--昵称-->
+        <view class="flex-start-center padding-bottom-10">
+            <text class="width30">昵称</text>
+            <view class="width70">
+                <input class="border" name="nickName" value="{{userInfo.nickName}}"/>
+            </view>
+        </view>
+
+        <!--手机-->
+         <view class="flex-start-center padding-bottom-10">
+            <text class="width30">手机</text>
+            <view class="width70">
+                <input class="border" name="tel" placeholder="11位手机号码，未绑定" value="{{userInfo.tel}}" disabled="{{userInfo.tel.length > 0 ? true : false}}"/>
+            </view>
+        </view>
+
+        <!--邮箱-->
+         <view class="flex-start-center padding-bottom-10">
+            <text class="width30">邮箱</text>
+            <view class="width70">
+                <input class="border" name="email" placeholder="常用邮箱地址，未绑定" value="{{userInfo.email}}" disabled="{{userInfo.email.length > 0 ? true : false}}"/>
+            </view>
+        </view>
+
+        <!--微信号-->
+         <view class="flex-start-center padding-bottom-10">
+            <text class="width30">微信号</text>
+            <view class="width70">
+                <input class="border" name="wechat" placeholder="微信账号，绑定后无法修改" value="{{userInfo.wechat}}" disabled="{{userInfo.wechat.length > 0 ? true : false}}"/>
+            </view>
+        </view>
+
+        <!--支付宝账号-->
+        <view class="flex-start-center padding-bottom-30">
+            <text class="width30">支付宝账号</text>
+            <view class="width70">
+                <input class="border" name="alipay" placeholder="支付宝账号，绑定后无法修改" value="{{userInfo.alipay}}" disabled="{{userInfo.alipay.length > 0 ? true : false}}"/>
+            </view> 
+        </view>
+
+    </view>
+
+    <view class="btn flex-start-center">
+        <button formType="submit" size="default" type="mini" plain="{{true}}">保存</button>
+    </view>
+
+    </form>
+</view>

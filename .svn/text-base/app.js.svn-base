@@ -1,0 +1,120 @@
+//app.js
+const utils = require('./utils/util.js')
+var userCreater = require('./utils/user.js')
+App({
+    onLaunch: function() {
+		var that = this
+		
+		// 获取设备信息
+		wx.getSystemInfo({
+			success: function(res) {
+				that.globalData.systemInfo = { 
+					'pixelRatio' : res.pixelRatio,
+					'windowWidth' : res.windowWidth,
+					'windowHeight' : res.windowHeight,
+					'sizePixelRatio' : 750/res.windowWidth,
+					'system' : res.system
+				}	
+			}
+		})
+
+		//调用应用实例的方法获取全局数据
+		that.getUserInfo()
+
+    },
+    getUserInfo:function(){
+    	var that = this
+
+		// wx.checkSession({
+		// 	success: function(){ //登录态未过期
+		// 		console.log('登录态未过期')
+		// 	},
+		// 	fail: function(){ //登录态过期
+				// 微信登录
+				wx.login({
+					success: function(res) {
+						if (res.code) {
+							//发起网络请求
+							wx.request({
+								url: 'https://app.99haom.com',
+								data: {
+									code: res.code
+								},
+								method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+								// header: {}, // 设置请求的 header
+								success: function(res){
+									// success
+									// "openid": "OPENID", 用户唯一标识
+									// "session_key": "SESSIONKEY 对用户数据进行加密签名的密钥,不应该在网络上传输
+									// 3rd_session
+									
+									if(!wx.getStorageSync('userInfo')){
+										// 获取用户信息
+										wx.getUserInfo({
+											success: function (res) {	
+												that.globalData.userInfo.avatarUrl = res.userInfo.avatarUrl
+												that.globalData.userInfo.nickName = res.userInfo.nickName
+												wx.setStorageSync('userInfo', that.globalData.userInfo)
+											}
+										})
+									}
+									
+								},
+								fail: function() {
+									// fail
+								},
+								complete: function() {
+									// complete
+								}
+							})
+						} else {
+							console.log('获取用户登录态失败！' + res.errMsg)
+						}
+					}
+				})
+			// },
+			// complete: function(){
+				
+			// }
+		// })		
+  },
+  globalData:{
+	userInfo : {
+		avatarUrl : '',
+		nickName : '',
+		tel:'',
+		email:'',
+		wechat:'',
+		alipay:''
+	},
+	systemInfo : {
+		'pixelRatio' : 0,
+		'windowWidth' : 0,
+		'windowHeight' : 0,
+		'sizePixelRatio' : 0,
+		'system' : ''
+	},
+	ip:"http://"+"192.168.2.115"+":8022",
+    wsip:"ws://"+"192.168.2.115"+":8022"
+  }
+	
+
+})
+
+
+// {
+// 	"pagePath": "pages/beijing/beijing",
+// 	"iconPath": "image/tabbar-icon/icon-china.png",
+// 	"selectedIconPath": "image/tabbar-icon/icon-china-a.png",
+// 	"text": "北京"
+// }, {
+// 	"pagePath": "pages/canada/canada",
+// 	"iconPath": "image/tabbar-icon/icon-cananda.png",
+// 	"selectedIconPath": "image/tabbar-icon/icon-cananda-a.png",
+// 	"text": "加拿大"
+// }, {
+// 	"pagePath": "pages/mine/mine",
+// 	"iconPath": "image/tabbar-icon/icon-user.png",
+// 	"selectedIconPath": "image/tabbar-icon/icon-user-a.png",
+// 	"text": "我的"
+// }

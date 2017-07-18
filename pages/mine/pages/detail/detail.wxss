@@ -1,0 +1,37 @@
+/* pages/mine/pages/detail/detail.wxss */
+.content {
+    padding: 10rpx;
+}
+.header-img {
+    height: 70rpx;
+    width: 70rpx;
+}
+.font12 {
+    font-size: 24rpx;
+}
+.marginleft10 {
+    margin-left: 20rpx;
+}
+.width20{
+    width: 20%;
+    text-align: center;
+}
+.width10{
+    width: 10%;
+    text-align: center;
+}
+.width40{
+    width: 40%;
+    text-align: center;
+}
+.width30{
+    width: 30%;
+    text-align: center;
+}
+.txtcolor{
+    background-color: white;
+}
+.enptytext{
+    text-align: center;
+    
+}

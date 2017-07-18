@@ -1,0 +1,47 @@
+{
+    "pages": [
+        "pages/beijing/beijing",
+        "pages/canada/canada",
+        "pages/mine/mine",      
+        "pages/mine/pages/detail/detail",
+        "pages/mine/pages/profile/profile",
+        "pages/mine/pages/rules/rules",
+        "pages/mine/pages/odds/odds",
+        "pages/mine/pages/QRCode/QRCode",
+        "pages/mine/pages/myUsers/myUsers",
+        "pages/mine/pages/nper/nper",
+        "pages/mine/pages/rules/ruleDetail/ruleDetail",
+        "pages/mine/pages/odds/oddsDetail/oddsDetail",
+        "pages/mine/pages/chat/chat",
+        "pages/mine/pages/chatroom/chatroom"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "计算工具",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#333",
+        "selectedColor": "#d81e06",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "list": [{
+            "pagePath": "pages/beijing/beijing",
+            "iconPath": "images/tabbar-icon/icon-china.png",
+            "selectedIconPath": "images/tabbar-icon/icon-china-a.png",
+            "text": "北京"
+        },{
+            "pagePath": "pages/canada/canada",
+            "iconPath": "images/tabbar-icon/icon-cananda.png",
+            "selectedIconPath": "images/tabbar-icon/icon-cananda-a.png",
+            "text": "加拿大"
+        },  {
+            "pagePath": "pages/mine/mine",
+            "iconPath": "images/tabbar-icon/icon-user.png",
+            "selectedIconPath": "images/tabbar-icon/icon-user-a.png",
+            "text": "我的"
+        }]
+    },
+    "debug" : false
+}

@@ -1,0 +1,23 @@
+page {
+	display: flex;
+	flex-direction: column;
+}
+.content{
+	margin: 25rpx 30rpx 25rpx 30rpx;
+    background-color: white;
+    border: 2rpx solid #e2e2e2;
+    border-radius: 16rpx;
+    padding: 20rpx;
+	text-align: center;
+}
+
+.desc {
+	line-height: 30px;
+	color: #333;
+	display: block;
+	padding: 0 20px;
+}
+
+image {
+	width: 70%; 
+}

@@ -1,0 +1,8 @@
+<!--pages/mine/pages/rules/ruleDetail/ruleDetail.wxml-->
+<import src="../../../../../wxParse/wxParse.wxml"/> 
+
+<view class="content">
+    <text>规则如下：\n</text>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+

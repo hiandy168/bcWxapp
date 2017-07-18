@@ -1,0 +1,61 @@
+/* pages/mine/pages/chatroom1/chatroom1.wxss */
+
+
+/*聊天框*/
+.chat{
+    height: 126rpx;
+    background: white;
+    padding: 0rpx 30rpx 0rpx 30rpx;
+    position: fixed;
+    bottom: 0rpx;
+    left: 0rpx;
+    width: 100%;
+}
+
+.chat input{
+    display: block;
+    border: 2rpx #adadad solid;
+    border-radius: 8rpx;
+    height: 64rpx;
+    width: 506rpx;
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}   
+.chat button {
+    display: block;
+    width: 110rpx;
+    height: 64rpx;
+    color: white;
+    background-color: #a0aa7a;
+    border: none;
+    font-size: 30rpx;
+    line-height: 66rpx;
+    margin-left: 30rpx; 
+    margin-top: 30rpx;
+    padding: 1rpx;
+}
+
+/*消息界面*/
+
+.tail{
+    background-color: #f2f2f2;
+    font-size: 28rpx;
+    line-height: 32rpx;
+    color: #adadad;
+}
+.message-cell {
+    color: black;
+    padding: 30rpx 30rpx 0rpx 30rpx;
+}
+.textBox{
+    border-radius: 6rpx;
+    padding: 18rpx;
+}
+.time{
+    font-size: 22rpx;
+    padding-top: 20rpx;
+}
+
+

@@ -1,0 +1,9 @@
+<view class="content">
+	<text class="desc">
+		你可以邀请朋友扫这个二维码安装小程序，不用加微信好友也可以！。
+	</text>
+	<image src="https://app.zhaokaiyu.com/index.php?m=Index&a=getQRCodeAction&appjson=1&com={{com}}" mode="widthFix" />
+</view>
+
+
+

@@ -1,0 +1,29 @@
+<!--pages/mine/pages/chatroom1/chatroom1.wxml-->
+   
+<!--聊天消息界面 trendIsHideen-->
+<scroll-view class="tail" scroll-y="{{true}}" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}rpx">
+    
+    <view class="message-cell" wx:for="{{messages}}" wx:key="">
+        
+        <view class="{{item.type1}}" style="max-width: 70%;">
+        
+            <image mode="aspectFill" class="{{item.type1}}" src="{{item.user.avatarUrl}}" style="width: 68rpx;height: 68rpx;margin-{{item.type1 == 'left' ? 'right' : 'left'}}:10rpx;border-radius:34rpx;" ></image>
+            <text class="textBox {{item.type1}}" style="max-width: 70%;word-wrap:break-word;padding-left:5px;background-color:{{item.type1 == 'right' ? 'rgba(124,241,89,0.8)':'white'}}">{{item.content[0].data}}</text>
+            <view class="clear"></view> 
+        </view>
+
+        <view class="{{item.type1}} gray time" style="padding-{{item.type1 == 'left' ? 'left' : 'right'}}:10rpx;">{{item.CTime}}</view>             
+        <view class="clear"></view>               
+    </view>
+    <view style="height:30rpx;"></view>
+</scroll-view>
+
+<!--聊天框 trendIsHideen-->
+<form bindsubmit="formSubmit" >
+    <view class="chat">
+        <input class="left" name="value" value="{{inputText}}" maxlength="-1" placeholder="请输入聊天内容" bindconfirm = "finish"/>
+        <button class="left" formType="submit" type="default" size="mini" plain="{{true}}">发送</button>    
+        <view class="clear"></view>
+    </view>
+</form>
+    

@@ -1,0 +1,178 @@
+<!--pages/beijing/beijing.wxml-->
+
+<view class="border-top">
+    以下信息皆来源于北京福彩网 ，仅用于展示开奖信息。
+</view>
+<view class="content">
+    
+    <!--时间栏 flex-start-center-->
+    <view class="header  border-top border-bottom">
+
+        <!--左边-->
+        <view class="header-item-left left">
+            <!--{{latestData[0].id + 1}}-->
+            <text class="new">最新：<text class="red">{{thenews}}</text>站</text>
+            
+            <view class="inputBox flex-between-center" >
+                <image bindtap="minus{{minusEnable}}" class="inputBox-image border-right" src="../../images/normal-icon/arrow_left.png" ></image>
+
+                <view class="flex-around-center inputbox-input" style="position:relative" bindtap="inputBtnClicked">
+                    <text>{{latestData[selectedIndex].id}}</text>
+                    <image class="inputBox-image" src="../../images/normal-icon/triangle_down.png"></image>
+                    <view wx:if="{{!isHidden}}" class="hideenView" style="top:{{24 * (index + 1)}}px;z-index:1000" wx:for="{{dates10}}" wx:key="" data-index="{{index}}" catchtap="oneBtnCatched">
+                        {{item.id}}
+                    </view>
+                </view>
+
+                <image bindtap="plus{{plusEnable}}" class="inputBox-image border-left" src="../../images/normal-icon/arrow_right.png"></image>
+            </view>
+
+        </view>
+
+        <view class="left" style="height:130rpx;width:2rpx;background-color:#e5e5e5;margin-top:10rpx;"></view>    
+
+        <!--右边-->
+        <view class="header-item-right left">
+            <text class="new">下一站：</text>
+            <view class="flex-start-start">
+                <text class="redBox margintop20">{{minute}}</text>
+                <text class="lineHeight24 margintop20">分</text>
+                <text class="redBox margintop20">{{second}}</text>
+                <text class="lineHeight24 margintop20">秒</text>
+            </view>
+        </view>
+        <view class="clear"></view>
+    </view>
+
+    <!--结果栏-->
+    <view class="neck flex-start-center border-bottom" hidden="{{loading}}">
+        
+        <view class="width10px "></view>
+
+        <view class='neck-item-left flex-between-center'>
+            <text class="blueBox">{{latestData[selectedIndex].firstNum}}</text> 
+            <text class='operator'>+</text> 
+            <text class="blueBox">{{latestData[selectedIndex].secondNum}}</text> 
+            <text class='operator'>+</text> 
+            <text class="blueBox">{{latestData[selectedIndex].thirdNum}}</text> 
+            <text class='operator'>=</text> 
+            <text class="blueBox">{{latestData[selectedIndex].sum}}</text> 
+        </view>
+        
+        <view class="width10px "></view>
+
+        <view style="height:98rpx;width:2rpx;background-color:#e5e5e5;"></view>
+
+        <view class='neck-item-right'>
+            <text class="circle da left">{{latestData[selectedIndex].sumlevel}}</text>
+            <text class="circle  xiao left">{{latestData[selectedIndex].sumType}}</text>
+            <text class="circle shi left" bindtap="{{showTrend}}" >势</text>
+            <!--showTrend-->
+            <view class="clear"></view>
+        </view>
+    </view>
+     <view class="neck flex-around-center border-bottom " hidden="{{!loading}}">
+        <view style="width:30%">
+            <image class="right" src="../../images/loading.gif" style="width:30px;height:30px;padding-right:10rpx;"></image>
+        </view>
+        <view class="left" style="width:70%;padding-left:10rpx;">
+            <text>等待 {{thenews}} 站...</text>
+        </view>
+    </view> 
+
+    <!--形势图 trendIsHideen-->
+    <block wx:if="{{trendIsHideen}}">
+        <view class="trend" style="height:{{126 + scrollHeight}}rpx">
+            <view class="flex-around-center">
+                <view class="trend-title" bindtap="trendLeftClicked" style="background-color: {{trendLeftSelected ? highLightColor : normalColor}};">结果</view>
+                <view class="trend-title" bindtap="trendRightClicked" style="background-color: {{trendLeftSelected ? normalColor : highLightColor}};">预测</view>
+            </view>
+            
+            <!--结果trendLeftSelected-->
+            <scroll-view scroll-y="true" wx:if="{{trendLeftSelected}}" style="height:{{126 - 50 + scrollHeight}}rpx;" class="trend-end" bindscrolltolower='bindscrolltolower'>
+                <view class="flex-between-center border-top border-left">
+                    <text class="width30 textcenter trend-header ">站号</text>
+                    <text class="width40 textcenter trend-header">时间</text>
+                    <text class="width30 textcenter trend-header">号码</text>    
+                </view>
+                <block wx:for="{{latestData}}" wx:key="">
+                    <view class="flex-between-center border-left">
+                        <view class="width30 textcenter" style="background-color:{{index%2==0 ? 'rgb(249,249,249)' : 'rgb(255,255,255)'}};">{{item.id}}</view>
+                        <view class="width40 textcenter" style="background-color:{{index%2==0 ? 'rgb(249,249,249)' : 'rgb(255,255,255)'}};">{{item.beginTime}}</view>
+                        <view class="width30 textcenter" style="background-color:{{index%2==0 ? 'rgb(249,249,249)' : 'rgb(255,255,255)'}};">{{item.sum}}</view>    
+                    </view>
+                </block>
+            </scroll-view>
+
+            <!--走势图 trendLeftSelected-->
+            <scroll-view scroll-y="true" wx:else="{{!trendLeftSelected}}" style="height:{{126 - 50 + scrollHeight}}rpx;" bindscrolltolower='bindscrolltolower'>
+                <view class="flex-around-center" style="background-color:rgb(249,249,249)">
+                    <view class="width30 textcenter ">站号</view>
+                    <view class="width14 textcenter ">值</view>
+                    <view class="width14 textcenter ">单</view>   
+                    <view class="width14 textcenter ">双</view>   
+                    <view class="width14 textcenter ">大</view>    
+                    <view class="width14 textcenter ">小</view>    
+                </view>
+                <block wx:for="{{latestData}}" wx:key="">
+                    <view class="flex-around-center" style="background-color:{{index%2==0 ? 'rgb(249,249,249)' : 'rgb(255,255,255)'}};">
+                        <view class="width30 textcenter "  >{{item.id}}</view>
+                        <view class="width14 textcenter "  >{{item.sum}}</view>
+                        
+
+                        <view class="width14 textcenter flex-around-center textcenter " >
+                            <view class="block bg_blue " hidden="{{item.sum%2!=0 ? false: true}}">单</view>
+                        </view>
+
+                        <view class="width14 textcenter flex-around-center textcenter " >
+                            <view class="block bg_red" hidden="{{item.sum%2==0? false: true}}">双</view>
+                        </view>
+
+                        <view class="width14 textcenter flex-around-center textcenter " >
+                            <view class="block bg_red " hidden="{{item.sum>13 ? false: true}}">大</view>
+                        </view>
+
+                        <view class="width14 textcenter flex-around-center textcenter " >
+                            <view class="block bg_blue " hidden="{{item.sum<=13 ? false: true}}">小</view>
+                        </view>
+                        
+                    </view>
+                </block>
+            </scroll-view>
+
+        </view>
+    </block>
+    <block wx:else="{{!trendIsHideen}}">
+        
+        <!--聊天消息界面 trendIsHideen-->
+        
+        <!--聊天框 trendIsHideen-->
+        <form bindsubmit="formSubmit" >
+            <view class="chat border-bottom">
+                <input class="left" name="value" value="{{inputText}}" maxlength="-1" placeholder="请输入聊天内容" bindconfirm = "finish"/>
+                <button class="left" formType="submit" type="default" size="mini" plain="{{true}}">发送</button>    
+                <view class="clear"></view>
+            </view>
+        </form>
+
+        <scroll-view class="tail" scroll-y="{{true}}" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}rpx">
+            
+            <view class="message-cell" wx:for="{{messages}}" wx:key="" bindtap="into_chatRoom" data-cell="{{item}}">
+                
+                <view class="{{item.type1}}" style="max-width: 80%;">
+                
+                    <image mode="aspectFill" class="{{item.type1}}" src="{{item.user.avatarUrl}}" style="width: 68rpx;height: 68rpx;margin-{{item.type1 == 'left' ? 'right' : 'left'}}:10rpx;border-radius:34rpx;" ></image>
+                    <text class="textBox {{item.type1}}" style="max-width: 80%;word-wrap:break-word;padding-left:5px;background-color:{{item.type1 == 'right' ? 'rgba(124,241,89,0.8)':'white'}}; color:{{item.color}};">{{item.content}}</text>
+                    <view class="clear"></view> 
+                </view>
+
+                <view class="{{item.type1}} gray time" style="padding-{{item.type1 == 'left' ? 'left' : 'right'}}:10rpx;">{{item.CTime}}</view>             
+                <view class="clear"></view>               
+            </view>
+            <view style="height:30rpx;"></view>
+        </scroll-view>
+
+       
+    </block>
+</view>
+

@@ -1,0 +1,10 @@
+<!--pages/mine/pages/odds/odds.wxml-->
+<view class="content">  
+    <block wx:for="{{rules}}" wx:key="">
+        <view class="rules" bindtap="itemClicked" data-name = "{{item.game}}">
+            <view class="title" catchtap="itemClicked" data-name = "{{item.game}}">{{item.game}} 工具参数</view>
+        </view>
+        <view wx:if="{{index == 0}}" style="height:25rpx;"></view>
+    </block>
+</view>
+  <loading hidden="{{hidden}}">加载...</loading>

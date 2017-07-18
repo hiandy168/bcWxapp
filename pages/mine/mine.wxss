@@ -1,0 +1,25 @@
+/* pages/mine/mine.wxss */
+.userinfo {
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(#ddd6f3), to( #faaca8));
+  padding-left: 50rpx;
+	height: 265rpx;
+}
+
+.userinfo-avatar {
+  width: 135rpx;
+  height: 135rpx;
+  border-radius: 50%;
+	margin-right: 20rpx;
+}
+
+.userinfo-nickname {
+  color: white;
+	font-size: 28rpx;
+}
+
+.redIcon {
+  width: 30rpx;
+  height: 30rpx;
+  background-color: red;
+  border-radius: 15rpx;
+}

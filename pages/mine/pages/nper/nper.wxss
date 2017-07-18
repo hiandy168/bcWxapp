@@ -1,0 +1,52 @@
+/* pages/mine/pages/nper/nper.wxss */
+.content {
+    padding: 10rpx;
+}
+.header-img {
+    height: 70rpx;
+    width: 70rpx;
+}
+.font12 {
+    font-size: 24rpx;
+}
+.marginleft10 {
+    margin-left: 20rpx;
+}
+.width20{
+    width: 20%;
+    text-align: center;
+}
+.width10{
+    width: 10%;
+    text-align: center;
+}
+.width60{
+    width: 60%;
+    text-align: center;
+}
+.width30{
+    width: 30%;
+    text-align: center;
+}
+.txtcolor{
+    background-color: white;
+}
+.little {
+    font-size: 20rpx;
+    line-height: 39rpx;
+}
+.green {
+    color: green;
+}
+.enptytext{
+    text-align: center;    
+}
+
+.textleft {
+    text-align: left;
+    
+}
+.paadingleft10 {
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}

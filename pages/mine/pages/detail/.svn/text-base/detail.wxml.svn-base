@@ -1,0 +1,32 @@
+<!--pages/mine/pages/detail/detail.wxml-->
+<view>
+    <view class="content flex-start-center">
+        <image src="../../../../image/detail.png" class="header-img"></image>
+        <view class="marginleft10">
+            <view><text>乐豆明细</text></view>
+            <view><text class="font12">乐豆明细记录，充值，使用情况等记录</text></view>
+        </view>
+    </view>
+    
+    <view class="content txtcolor font12">
+        <text class="red">注：仅保存30天的记录</text>
+        
+        <scroll-view class="" scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="lower">
+            <view class="flex-between-center border-top border-left" style="height:20px">
+                <text class="width30 border-right border-bottom">时间</text>
+                <text class="width20 border-right border-bottom">类型</text>
+                <text class="width20 border-right border-bottom">数量(个)</text>
+                <text class="width30 border-right border-bottom">操作后额度(个)</text>    
+            </view>
+            <block wx:for="{{sources}}" wx:key="">
+                <view class="flex-between-center border-left" style="height:20px">
+                    <text class="width30 border-right border-bottom">12/02 12:38:34</text>
+                    <text class="width20 border-right border-bottom">充值</text>
+                    <text class="width20 border-right border-bottom">100000</text>
+                    <text class="width30 border-right border-bottom">20000000</text>    
+                </view>
+            </block>
+        </scroll-view>
+        
+    </view>
+</view>

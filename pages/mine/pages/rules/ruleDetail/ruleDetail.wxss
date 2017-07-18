@@ -1,0 +1,11 @@
+/* pages/mine/pages/rules/ruleDetail/ruleDetail.wxss */
+@import "../../../../../wxParse/wxParse.wxss";
+
+.content{
+    margin: 25rpx 30rpx 25rpx 30rpx;
+
+    background-color: white;
+    border: 2rpx solid #e2e2e2;
+    border-radius: 16rpx;
+    padding: 40rpx 30rpx 40rpx 30rpx;
+}

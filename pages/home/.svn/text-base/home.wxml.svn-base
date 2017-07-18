@@ -1,0 +1,4 @@
+<!--pages/home/home.wxml-->
+
+<button bindtap="beijing">北京</button>
+<button bindtap="canada">加拿大</button>

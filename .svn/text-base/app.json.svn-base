@@ -1,0 +1,39 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/beijing/beijing",
+        "pages/canada/canada",
+        "pages/mine/mine",      
+        
+        "pages/mine/pages/detail/detail",
+        "pages/mine/pages/profile/profile",
+        "pages/mine/pages/record/record",
+        "pages/mine/pages/helper/helper",
+        "pages/mine/pages/rules/rules"
+              
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "微信博彩",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#333",
+        "selectedColor": "#d81e06",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "list": [{
+            "pagePath": "pages/home/home",
+            "iconPath": "image/tabbar-icon/icon-like.png",
+            "selectedIconPath": "image/tabbar-icon/icon-like-a.png",
+            "text": "首页"
+        },  {
+            "pagePath": "pages/mine/mine",
+            "iconPath": "image/tabbar-icon/icon-user.png",
+            "selectedIconPath": "image/tabbar-icon/icon-user-a.png",
+            "text": "我的"
+        }]
+    },
+    "debug":false
+}

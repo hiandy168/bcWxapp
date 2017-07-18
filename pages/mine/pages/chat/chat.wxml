@@ -1,0 +1,31 @@
+
+<view wx:if="{{arr.length!=0}}">
+
+	<view wx:for="{{ arr }}" wx:key="time" class="chat_list">
+
+		<view class="list_left"  bindtap="into_chatRoom" data-username="{{member[index].openid}}" data-avatarUrl="{{member[index].avatarUrl}}" data-nickname="{{member[index].nickName}}">
+
+			<view class="list_pic">
+				<image src="{{member[index].avatarUrl}}" mode="aspectFit"></image>
+			</view>
+
+			<view class="list_text">
+				<text class="list_user">{{member[index].nickName}}</text>
+				<text class="list_word">{{item[item.length-1].message ? item[item.length-1].message.content[0].data : item[item.length-1].content[0].data }}</text>
+			</view>
+
+		</view>
+
+		<view class="list_right">
+			<text data-username="{{ member[index].openid }}" >{{ item[item.length-1].CTime }}</text>
+			<text bindtap="del_chat" data-username="{{ member[index].openid }}" class="delChat">删除会话</text>
+		</view>
+
+	</view>
+
+</view>
+
+<view wx:else>
+	<view class="kongtext" >消息为空</view>
+</view>		
+

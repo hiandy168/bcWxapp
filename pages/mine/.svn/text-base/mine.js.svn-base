@@ -1,0 +1,56 @@
+// pages/mine/mine.js
+Page({
+  data:{
+    userInfo: {
+      avatarUrl : '',
+      nickName : '',
+      tel : '',
+      email : '',
+      wechat : '',
+      alipay : ''
+    },
+    items: [{
+        icon: '../../assets/images/iconfont-order.png',
+        text: '我的资料',
+        path: './pages/profile/profile'
+      }, {
+        icon: '../../assets/images/iconfont-addr.png',
+        text: '乐豆明细',
+        path: './pages/detail/detail'
+      }, {
+        icon: '../../assets/images/iconfont-addr.png',
+        text: '游戏规则',
+        path: './pages/rules/rules'
+      }, {
+        icon: '../../assets/images/iconfont-addr.png',
+        text: '联系客服',
+        path: './pages/helper/helper'
+      }]
+  },
+  onLoad:function(options){
+    
+    // 页面初始化 options为页面跳转所带来的参数
+    
+    
+  },
+  onReady:function(){
+    // 页面渲染完成
+  },
+  onShow:function(){
+    var that = this
+    // 页面显示
+
+    // 设置用户数据
+    var userInfo = wx.getStorageSync('userInfo')
+    that.setData({ userInfo : userInfo })
+  },
+  onHide:function(){
+    // 页面隐藏
+  },
+  onUnload:function(){
+    // 页面关闭
+  },
+  navigateTo(e) {
+    wx.navigateTo(e)
+  }
+})
